@@ -1,0 +1,8 @@
+Every game will have a model and a view.
+
+Model -> Describes my game state
+View -> Draws the model
+
+Game Loop
+    update
+    draw 
