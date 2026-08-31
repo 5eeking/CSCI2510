@@ -1,0 +1,178 @@
+<html>
+    <head>
+        <title>Game Loop</title>
+        <style>
+            *{
+                margin:0;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canv">
+
+        </canvas>
+        <script src = "Vector2.js"></script>
+        <script>
+            let canvas = document.querySelector("#canv")
+            let ctx = canvas.getContext("2d")
+
+            let position1 = new Vector2(1, 1, 40, 40)
+            let velocity1 = new Vector2(5, 5)
+            // let position2 = new Vector2(window.innerWidth - 51, window.innerHeight - 51, 50, 50)
+            // let velocity2 = new Vector2(-5, -5)
+
+            // let colors = ["red", "orange", "yellow", "green", "lime", "lightgreen", "blue", "teal", "cyan", "purple", "magenta", "pink"]
+            // let colorNum = 0
+
+            function gameLoop(){
+                update()
+                draw()
+                requestAnimationFrame(gameLoop)
+            }
+
+            function update(){
+
+                position1.x += velocity1.x
+                /*
+                if (position1.x + position1.width >= window.innerWidth || position1.x <= 0) {
+                    velocity1.x *= -1
+                    colorNum++
+                    if (colorNum == colors.length) {
+                        colorNum = 0
+                    }
+                }
+
+                if (position1.y + position1.height >= window.innerHeight || position1.y <= 0) {
+                    velocity1.y *= -1
+                    colorNum++
+                    if (colorNum == colors.length) {
+                        colorNum = 0
+                    }
+                }
+
+                if (position2.x + position2.width >= window.innerWidth || position2.x <= 0) {
+                    velocity2.x *= -1
+                    colorNum++
+                    if (colorNum == colors.length) {
+                        colorNum = 0
+                    }
+                }
+
+                if (position2.y + position2.height >= window.innerHeight || position2.y <= 0) {
+                    velocity2.y *= -1
+                    colorNum++
+                    if (colorNum == colors.length) {
+                        colorNum = 0
+                    }
+                }
+
+                if (position1.x + position1.width + velocity1.x > position2.x && position1.x + velocity1.x < position2.x + position2.width) {
+                    if (position1.y + position1.height > position2.y && position1.y < position2.y + position2.height) {
+                        velocity1.x *= -1
+                        velocity2.x *= -1
+                        colorNum = 0
+                        colorNum++
+                        if (colorNum == colors.length) {
+                            colorNum = 0
+                        }
+                    }
+                }
+                if (position1.x <= position2.x + 40) {
+                    if ((position2.y >= position1.y >= position2.y + 40) || (position2.y >= position1.y + 40 >= position2.y + 40)) {
+                        velocity1.x *= -1
+                        velocity2.x *= -1
+                        colorNum = 1
+                        colorNum++
+                        if (colorNum == colors.length) {
+                            colorNum = 0
+                        }
+                    }
+                }
+                if (position1.y + position1.height + velocity1.y > position2.y && position1.y + position1.height < position2.y + position2.height) {
+                    if (position1.x + position1.width > position2.x && position1.x < position2.x + position2.width) {
+                        velocity1.y *= -1
+                        velocity2.y *= -1
+                        colorNum = 2
+                        colorNum++
+                        if (colorNum == colors.length) {
+                            colorNum = 0
+                        }
+                    }
+                }
+                if (position1.y <= position2.y + 40) {
+                    if ((position2.x >= position1.x >= position2.x + 40) || (position2.x >= position1.x + 40 >= position2.x)) {
+                        velocity1.y *= -1
+                        velocity2.y *= -1
+                        colorNum = 3
+                        colorNum++
+                        if (colorNum == colors.length) {
+                            colorNum = 0
+                        }
+                    }
+                }
+
+                position1.x += velocity1.x
+                position1.y += velocity1.y
+                position2.x += velocity2.x
+                position2.y += velocity2.y
+                */
+
+                /*
+                if (position.y == 0 && position.x < window.innerWidth) {
+                    position.x += 1
+                }
+                if (position.x == window.innerWidth && position.y < window.innerHeight) {
+                    position.y += 1
+                }
+                if (position.y == window.innerHeight && position.x > 0) {
+                    position.x -= 1
+                }
+                if (position.x == 0 && position.y > 0) {
+                    position.y -= 1
+                }
+                */
+
+            }
+
+            function draw(){
+
+                // Expand the size of the canvas.
+                canvas.width = window.innerWidth
+                canvas.height = window.innerHeight
+
+                /*
+                ctx.beginPath()
+                ctx.rect(position1.x, position1.y, position1.width, position1.height)
+                ctx.fillStyle = colors[colorNum]
+                ctx.fill()
+
+                ctx.beginPath()
+                ctx.rect(position2.x, position2.y, position2.width, position2.height)
+                ctx.fillStyle = colors[colorNum]
+                ctx.fill()
+                */
+
+                // Signaling to the context that I'm going to draw something.
+                ctx.save()
+
+                // Set the center of our object.
+                ctx.translate(position.x, position.y)
+
+                ctx.lineTo(-40, -40)
+                ctx.lineTo(40, -40)
+                ctx.lineTo(40, 40)
+                ctx.lineTo(-40, 40)
+                
+                ctx.fillStyle = "pink"
+                ctx.fill()
+
+                // Signaling that I'm done drawing.
+                ctx.restore()
+            }
+
+            requestAnimationFrame(gameLoop)
+            
+        </script>
+    </body>
+</html>
