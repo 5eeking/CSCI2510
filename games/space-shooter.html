@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Game Loop</title>
+        <title>Space Shooter</title>
         <style>
             *{
                 margin:0;
@@ -14,43 +14,18 @@
         </canvas>
         <script src = "../engine/Vector2.js"></script>
         <script src = "../engine/Input.js"></script>
+        <script src = "../engine/Scene.js"></script>
+        <script src = "../engine/Component.js"></script>
+        <script src = "../engine/GameObject.js"></script>
         <script src = "../engine/Engine.js"></script>
+
+        <script src = "MainScene.js"></script>
+        <script src = "MainGameObject.js"></script>
+        <script src = "DrawComponent.js"></script>
+        <script src = "UpdateComponent.js"></script>
         <script>
 
-            let position = new Vector2(40, 40)
-
-            function update(){
-                // console.log(Input.keysDown)
-
-                if (Input.keysDown.includes("ArrowRight") || Input.keysDown.includes("KeyD"))
-                    position.x += 5
-                if (Input.keysDown.includes("ArrowLeft") || Input.keysDown.includes("KeyA"))
-                    position.x -= 5
-                if (Input.keysDown.includes("ArrowDown") || Input.keysDown.includes("KeyS"))
-                    position.y += 5
-                if (Input.keysDown.includes("ArrowUp") || Input.keysDown.includes("KeyW"))
-                    position.y -= 5
-            }
-
-            function draw(ctx){
-
-                // Signaling to the context that I'm going to draw something.
-                ctx.save()
-
-                // Set the center of our object.
-                ctx.translate(position.x, position.y)
-
-                ctx.lineTo(-40, -40)
-                ctx.lineTo(40, -40)
-                ctx.lineTo(40, 40)
-                ctx.lineTo(-40, 40)
-                
-                ctx.fillStyle = "pink"
-                ctx.fill()
-
-                // Signaling that I'm done drawing.
-                ctx.restore()
-            }
+            Engine.currentScene = new MainScene()
 
             Engine.start()
             
