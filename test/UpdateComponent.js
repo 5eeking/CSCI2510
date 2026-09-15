@@ -1,12 +1,11 @@
 class UpdateComponent extends Component {
 
-    dashCooldown
-
     start() {
         // this.player = new Player(window.innerWidth/2, window.innerHeight/2, 60, 60, 3, 0, 0)
         this.playerShape = new Vector2(20, 20)
         this.velocity = new Vector2(3, 0)
         this.ground = window.innerHeight/2
+        this.groundx = 0
         this.gravity = 0.2
         this.dash = 0
         this.dashDir = 0
@@ -20,7 +19,7 @@ class UpdateComponent extends Component {
         // console.log(Input.keysDown)
 
         /*** Player movement using A/D or </>. ***/
-        if (Input.keysDown.includes("ArrowRight") || Input.keysDown.includes("KeyD")) {
+        /*if (Input.keysDown.includes("ArrowRight") || Input.keysDown.includes("KeyD")) {
             if (this.transform.position.x + this.playerShape.x < window.innerWidth){
                 if (this.dashCurrent == 0) {
                     this.transform.position.x += this.velocity.x
@@ -34,7 +33,7 @@ class UpdateComponent extends Component {
                     this.dashDir = 2
                 }
             }
-        }
+        }*/
 
         /*** Player jump movement. ***/
         if (Input.keysDown.includes("Space")) {
@@ -59,7 +58,7 @@ class UpdateComponent extends Component {
         }
 
         /*** Player dash movement. ***/
-        if (Input.keysDown.includes("ShiftLeft")) {
+        /*if (Input.keysDown.includes("ShiftLeft")) {
             if (this.dashCurrent == 0 && this.dashCooldown == 0) {
                 if (["KeyA", "KeyD", "ArrowLeft", "ArrowRight"].some(sub => Input.keysDown.includes(sub))) {
                     this.dash = 10
@@ -84,6 +83,6 @@ class UpdateComponent extends Component {
 
         if (this.dashCooldown > 0) {
             this.dashCooldown -= 1
-        }
+        }*/
     }
 }
