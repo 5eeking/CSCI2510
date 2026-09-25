@@ -1,13 +1,20 @@
 class GameObject {
     components = []
+
     markForDestroy = false
+
+    name
+
+    tags = []
 
     get transform() {
         return this.components[0];
     }
 
-    constructor() {
+    constructor(name, tags = []) {
         this.addComponent(new Transform())
+        this.name = name
+        this.tags = tags
     }
 
     addComponent(component, parameters) {
@@ -17,8 +24,9 @@ class GameObject {
     }
 
     start() {
-        for (const component of this.components) {
+        for (const component of this.components.filter(c=>!c.didStart)) {
             component.start?.()
+            component.didStart = true
         }
     }
 
@@ -36,5 +44,19 @@ class GameObject {
 
     destroy() {
         this.markForDestroy = true
+    }
+
+    getComponent(type) {
+        return this.components.find(c=>c instanceof type)
+    }
+
+    static find(name) {
+        // return SceneManager.currentScene.gameObjects.find(function(go){return go.name == name})
+        return SceneManager.currentScene.gameObjects.find(go=>go.name == name)
+    }
+
+    static findGameObjectsWithTag(tag) {
+        // return SceneManager.currentScene.gameObjects.find(function(go){return go.name == name})
+        return SceneManager.currentScene.gameObjects.filter(go=>go.tags.includes(tag))
     }
 }

@@ -1,5 +1,6 @@
 class UpdateComponent extends Component {
 
+    speed = 180
     start() {
         this.timeSinceLastLaser = 0
     }
@@ -8,15 +9,15 @@ class UpdateComponent extends Component {
         this.timeSinceLastLaser += 1
 
         if (Input.keysDown.includes("ArrowRight") || Input.keysDown.includes("KeyD"))
-            this.transform.position.x += 5
+            this.transform.position.x += Time.deltaTime * this.speed
         if (Input.keysDown.includes("ArrowLeft") || Input.keysDown.includes("KeyA"))
-            this.transform.position.x -= 5
+            this.transform.position.x -= Time.deltaTime * this.speed
         if (Input.keysDown.includes("ArrowDown") || Input.keysDown.includes("KeyS"))
-            this.transform.position.y += 5
+            this.transform.position.y += Time.deltaTime * this.speed
         if (Input.keysDown.includes("ArrowUp") || Input.keysDown.includes("KeyW"))
-            this.transform.position.y -= 5
+            this.transform.position.y -= Time.deltaTime * this.speed
 
-        if (this.timeSinceLastLaser > 30) {
+        if (this.timeSinceLastLaser > 15) {
             this.timeSinceLastLaser = 0
             instantiate(new LaserGameObject(), this.transform.position.clone())
         }
