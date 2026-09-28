@@ -2,7 +2,6 @@ class MainGameObject extends GameObject {
     constructor() {
         super("Main")
         this.addComponent(new UpdateComponent())
-        this.addComponent(new Dash())
         this.addComponent(new Polygon(), {fillStyle:"pink", points:Assets.square})
     }
 }

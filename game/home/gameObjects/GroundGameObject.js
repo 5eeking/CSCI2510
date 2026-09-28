@@ -1,7 +1,6 @@
 class GroundGameObject extends GameObject {
     constructor() {
         super("Ground")
-        //this.addComponent(new GroundController())
 
         let color = "black"
         let count = 0

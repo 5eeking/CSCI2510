@@ -92,40 +92,46 @@ class UpdateComponent extends Component {
                 }
 
         /*** Player dash movement. ***/
-        let dashCooldown = this.gameObject.getComponent(Dash).dashCooldown
         if (Input.keysDown.includes("ShiftLeft")) {
-            if (this.dashCurrent == 0 && dashCooldown == 100) {
+            if (this.dashCurrent == 0 && Globals.dashCooldown == 100) {
                 if (["KeyA", "KeyD", "ArrowLeft", "ArrowRight"].some(sub => Input.keysDown.includes(sub))) {
-                    this.dash = 600
+                    this.dash = 800
                     this.dashCurrent = 1
-                    dashCooldown = 99
-                    console.log(this.dash)
-                    console.log(dashCooldown)
+                    Globals.dashCooldown = 99
+                    // console.log(this.dash)
+                    // console.log(Globals.dashCooldown)
                 }
             }
         }
-        console.log(dashCooldown)
+        // console.log(Globals.dashCooldown)
         if (this.dash < 0 < this.dash) {
-            if (this.transform.position.x - this.playerShape.x - (Time.deltaTime * this.dash) < this.edgeOffset || this.transform.position.x + this.playerShape.x + (Time.deltaTime * this.dash) > window.innerWidth - this.edgeOffset ||
-                groundPosition.x + this.dash > 6000 || groundPosition.x - this.dash < -6000 ||
+            if (groundPosition.x + this.dash > 6000 || groundPosition.x - this.dash < -6000 ||
                 this.dash < 300) {
                 this.dash = 0
                 this.dashCurrent = 0
             }
             if (this.dir == 1) {
-                this.transform.position.x += Time.deltaTime * this.dash
-                groundPosition.x -= Time.deltaTime * this.dash
+                if (!(this.transform.position.x + this.playerShape.x + (Time.deltaTime * this.dash) > window.innerWidth - this.edgeOffset)) {
+                    this.transform.position.x += Time.deltaTime * this.dash
+                }
+                if (!(groundPosition.x + this.dash > 6000)) {
+                    groundPosition.x -= Time.deltaTime * this.dash
+                }
             } else {
-                this.transform.position.x -= Time.deltaTime * this.dash
-                groundPosition.x += Time.deltaTime * this.dash
+                if (!(this.transform.position.x - this.playerShape.x - (Time.deltaTime * this.dash) < this.edgeOffset)) {
+                    this.transform.position.x -= Time.deltaTime * this.dash
+                }
+                if (!(groundPosition.x - this.dash < -6000)) {
+                    groundPosition.x += Time.deltaTime * this.dash
+                }
             }
             this.dash -= Time.deltaTime * this.counterDash
-            console.log(this.dash, Time.deltaTime * this.counterDash)
+            // console.log(this.dash, Time.deltaTime * this.counterDash)
         }
 
-        if (dashCooldown == 0) {
-            console.log("working")
-            dashCooldown = 100
+        if (Globals.dashCooldown == 0) {
+            // console.log("working")
+            Globals.dashCooldown = 100
             this.dashCurrent = 0
         }
     }
