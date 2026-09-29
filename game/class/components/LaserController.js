@@ -1,6 +1,7 @@
 class LaserController extends Component {
     update() {
         this.transform.position.y -= Time.deltaTime * 200
+        let laserDamage = 1
 
         if (this.transform.position.y < 0) {
             this.gameObject.destroy()
@@ -16,7 +17,12 @@ class LaserController extends Component {
                 this.gameObject.destroy()
                 //enemyGameObject.destroy()
                 let healthComponent = enemyGameObject.getComponent(Health)
-                healthComponent.health--
+                if (this.gameObject.getComponent(Polygon).fillStyle == "green") {
+                    laserDamage = 2
+                } else {
+                    laserDamage = 1
+                }
+                healthComponent.health -= laserDamage
                 Globals.points++
             }
         }

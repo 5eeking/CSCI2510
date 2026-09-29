@@ -2,6 +2,8 @@ class TextLabel extends Component {
     fillStyle = "black"
     text = "[BLANK]"
 
+    font = "10px Arial" // Sizepx Font
+
     draw(ctx){
 
         // Signaling to the context that I'm going to draw something.
@@ -17,6 +19,9 @@ class TextLabel extends Component {
 
         
         ctx.fillStyle = this.fillStyle
+
+        ctx.font = this.font
+        
         ctx.fillText(this.text, 0, 0)
 
         // Signaling that I'm done drawing.

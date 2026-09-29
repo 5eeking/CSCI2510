@@ -1,4 +1,4 @@
-class Level01 extends Scene {
+class Level02 extends Scene {
     constructor() {
         super()
         this.instantiate(new GroundGameObject(), new Vector2(window.innerWidth/2, window.innerHeight/2))

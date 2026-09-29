@@ -15,6 +15,7 @@ class UpdateComponent extends Component {
         this.jumpCurrent = 0
         this.edgeOffset = 200
         this.laserCooldown = 0
+        this.playerMove = 0
     }
 
     update(){
@@ -49,9 +50,12 @@ class UpdateComponent extends Component {
                         this.dir = 1
                         if (this.transform.position.x + this.playerShape.x < window.innerWidth - this.edgeOffset){
                             this.transform.position.x += Time.deltaTime * this.velocity.x
+                            this.playerMove = 0
+                        } else {
+                            this.playerMove = 150
                         }
                         if (groundPosition.x - this.groundvx > -6000) {
-                            groundGameObject.transform.position.x -= Time.deltaTime * this.groundvx
+                            groundGameObject.transform.position.x -= Time.deltaTime * (this.groundvx + this.playerMove)
                             this.edgeOffset = 200
                         } else {
                             this.edgeOffset = 0
@@ -62,9 +66,12 @@ class UpdateComponent extends Component {
                         this.dir = 2
                         if (this.transform.position.x - this.playerShape.x > this.edgeOffset) {
                             this.transform.position.x -= Time.deltaTime * this.velocity.x
+                            this.playerMove = 0
+                        } else {
+                            this.playerMove = 150
                         }
                         if (groundPosition.x + this.groundvx < 6000) {
-                            groundGameObject.transform.position.x += Time.deltaTime * this.groundvx
+                            groundGameObject.transform.position.x += Time.deltaTime * (this.groundvx + this.playerMove)
                             this.edgeOffset = 200
                         } else {
                             this.edgeOffset = 0
