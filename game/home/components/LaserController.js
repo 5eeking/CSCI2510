@@ -8,7 +8,7 @@ class LaserController extends Component {
         }
         this.transform.position.x += Time.deltaTime * 800 * dir
 
-        if (this.transform.position.x < 0 || this.transform.position.x > window.innerWidth) {
+        if (this.transform.position.x < Camera.main.transform.position.x - window.innerWidth || this.transform.position.x > Camera.main.transform.position.x + window.innerWidth) {
             this.gameObject.destroy()
         }
     }

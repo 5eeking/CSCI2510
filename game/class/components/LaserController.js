@@ -23,7 +23,11 @@ class LaserController extends Component {
                     laserDamage = 1
                 }
                 healthComponent.health -= laserDamage
-                Globals.points++
+                //Globals.points++
+                let gameObjects = GameObject.findGameObjectsByType(Transform)
+                for (const gameObject of gameObjects) {
+                    gameObject.broadcastMessage("updatePoints", [1])
+                }
             }
         }
     }

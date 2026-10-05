@@ -1,6 +1,6 @@
 class GroundGameObject extends GameObject {
     constructor() {
-        super("Ground")
+        super("Ground", [], "foreground")
 
         let count = 0
         for (let i = -6000 - window.innerWidth; i < 6000 + window.innerWidth/2; i += 100) {

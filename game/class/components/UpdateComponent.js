@@ -24,5 +24,7 @@ class UpdateComponent extends Component {
                 laserGameObject.getComponent(Polygon).fillStyle = "green"
             }
         }
+
+        Camera.main.transform.position = this.transform.position.clone()
     }
 }

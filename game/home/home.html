@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Game Loop</title>
+        <title>Home</title>
         <style>
             *{
                 margin:0;
@@ -25,6 +25,7 @@
         <script src = "../../engine/components/Transform.js"></script>
         <script src = "../../engine/components/Polygon.js"></script>
         <script src = "../../engine/components/TextLabel.js"></script>
+        <script src = "../../engine/components/Camera.js"></script>
 
         <script src = "./scenes/GenericLevel.js"></script>
         <script src = "./scenes/Level01.js"></script>
@@ -32,8 +33,10 @@
 
         <script src = "./gameObjects/MainGameObject.js"></script>
         <script src = "./gameObjects/GroundGameObject.js"></script>
-        <script src = "./gameObjects/SkyGameObject.js"></script>
         <script src = "./gameObjects/LaserGameObject.js"></script>
+        <script src = "./gameObjects/QuestBoardGameObject.js"></script>
+        <script src = "./gameObjects/QuestBoardPopupGameObject.js"></script>
+        <script src = "./gameObjects/QuestPromptGameObject.js"></script>
         <script src = "./gameObjects/DashGameObject.js"></script>
         <script src = "./gameObjects/DashTextGameObject.js"></script>
         <script src = "./gameObjects/LevelControllerGameObject.js"></script>
@@ -41,14 +44,17 @@
         <script src = "./components/UpdateComponent.js"></script>
         <script src = "./components/LaserController.js"></script>
         <script src = "./components/DashController.js"></script>
+        <script src = "./components/QuestBoardController.js"></script>
+        <script src = "./components/QuestPromptController.js"></script>
         <script src = "./components/LevelController.js"></script>
 
         <script src = "./Assets.js"></script>
         <script src = "./Globals.js"></script>
+        <script src = "./Settings.js"></script>
 
         <script>
 
-            Engine.start(Level01)
+            Engine.start(Level01, Settings)
             
         </script>
     </body>

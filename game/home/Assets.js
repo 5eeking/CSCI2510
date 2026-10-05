@@ -10,4 +10,18 @@ class Assets {
         new Vector2(20, 20),
         new Vector2(-20, 20)
     ]
+    static questBoard = [
+        new Vector2(-50, -40),
+        new Vector2(50, -40),
+        new Vector2(50, 40),
+        new Vector2(40, 40),
+        new Vector2(40, 50),
+        new Vector2(35, 50),
+        new Vector2(35, 40),
+        new Vector2(-35, 40),
+        new Vector2(-35, 50),
+        new Vector2(-40, 50),
+        new Vector2(-40, 40),
+        new Vector2(-50, 40),
+    ]
 }
