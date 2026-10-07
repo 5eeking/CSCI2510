@@ -18,7 +18,7 @@ class LevelController extends Component {
         let mainGameObject = GameObject.find("Main")
         if (mainGameObject) {
             this.mainPosition = mainGameObject.transform.position
-            console.log(Camera.main.transform.position.x + window.innerWidth/2, Camera.main.transform.position.x - window.innerWidth/2)
+            //console.log(Camera.main.transform.position.x + window.innerWidth/2, Camera.main.transform.position.x - window.innerWidth/2)
 
             //if (this.mainPosition.x > 5000 || this.mainPosition.x < -5000) {
                 if (this.mainPosition.x + 20 <= Camera.main.transform.position.x - window.innerWidth/2) {

@@ -1,7 +1,4 @@
 class QuestBoardController extends Component {
-    start() {
-           
-    }
     update() {
         let mainGameObject = GameObject.find("Main")
         if (mainGameObject) {
@@ -17,6 +14,11 @@ class QuestBoardController extends Component {
                     questPromptGameObject.destroy()
                 }
                 if (questBoardPopupGameObject) {
+                    let questPaperGameObjects = GameObject.findGameObjectsWithTag("QuestPaper")
+                    for (const gameObject of questPaperGameObjects) {
+                        gameObject.destroy()
+                    }
+
                     questBoardPopupGameObject.destroy()
                 }
             }

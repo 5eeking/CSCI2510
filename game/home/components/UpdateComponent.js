@@ -93,7 +93,7 @@ class UpdateComponent extends Component {
             Globals.dashCooldown = 100
             this.dashCurrent = 0
         }
-        console.log(this.transform.position.x)
+        //console.log(this.transform.position.x)
         if (this.transform.position.x < 5000 && this.transform.position.x > -5000) {
             Camera.main.transform.position = this.transform.position.clone()
         } else {

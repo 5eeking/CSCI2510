@@ -21,9 +21,16 @@ class UpdateComponent extends Component {
             this.timeSinceLastLaser = 0
             let laserGameObject = instantiate(new LaserGameObject(), this.transform.position.clone())
             if (Math.random() < .3) {
-                laserGameObject.getComponent(Polygon).fillStyle = "green"
+                laserGameObject.getComponent(Polygon).fillStyle = "#FF00A3"
             }
         }
+
+        // if (Input.keysDownThisFrame.includes("Space")) {
+        //     let laserGameObject = instantiate(new LaserGameObject(), this.transform.position.clone())
+        //     if (Math.random() < .3) {
+        //         laserGameObject.getComponent(Polygon).fillStyle = "#FF00A3"
+        //     }
+        // }
 
         Camera.main.transform.position = this.transform.position.clone()
     }
