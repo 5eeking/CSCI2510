@@ -20,6 +20,7 @@
         <script src = "../../engine/GameObject.js"></script>
         <script src = "../../engine/Engine.js"></script>
         <script src = "../../engine/Time.js"></script>
+        <script src = "../../engine/Collisions.js"></script>
 
         <script src = "../../engine/components/Transform.js"></script>
         <script src = "../../engine/components/Polygon.js"></script>
@@ -35,6 +36,7 @@
         <script src = "./components/EnemyController.js"></script>
         <script src = "./components/LevelController.js"></script>
         <script src = "./components/PointsController.js"></script>
+        <script src = "./components/SceneTimerController.js"></script>
         <script src = "./components/Health.js"></script>
 
         <script src = "./gameObjects/MainGameObject.js"></script>
@@ -50,6 +52,17 @@
         <script>
 
             Engine.start(Level01, Settings)
+
+            // tests
+            let gameObject = new GameObject()
+            gameObject.addComponent(new Polygon(), {points: [
+                new Vector2(0, -1),
+                new Vector2(-1, 1),
+                new Vector2(1, 1)
+            ]})
+            console.assert(Collisions.isCollisionPointPolygon(new Vector2(0, 0), gameObject))
+            console.assert(!Collisions.isCollisionPointPolygon(new Vector2(2, 2), gameObject))
+            console.assert(!Collisions.isCollisionPointPolygon(new Vector2(1.00000001, 1.0000001), gameObject))
             
         </script>
     </body>

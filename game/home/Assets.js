@@ -24,4 +24,7 @@ class Assets {
         new Vector2(-40, 40),
         new Vector2(-50, 40),
     ]
+    static ground = [
+        
+    ]
 }
