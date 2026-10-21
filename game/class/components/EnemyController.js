@@ -16,7 +16,6 @@ class EnemyController extends Component {
             if (pointsGameObject) {
                 let pointsText = pointsGameObject.getComponent(TextLabel).text
                 pointsText = this.points + " points"
-                console.log(pointsText)
             }
         }
     }
