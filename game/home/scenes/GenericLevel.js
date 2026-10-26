@@ -1,7 +1,7 @@
 class GenericLevel extends Scene {
     constructor() {
         super()
-        let mainGameObject = this.instantiate(new MainGameObject(), new Vector2(window.innerWidth/2, 300))
+        let mainGameObject = this.instantiate(new MainGameObject(), new Vector2(0, 0))
         mainGameObject.addComponent(new UpdateComponent())
         let playerInside = this.instantiate(new MainGameObject(), new Vector2(0, 0))
         playerInside.transform.setParent(mainGameObject.transform)

@@ -3,7 +3,7 @@ class GroundGameObject extends GameObject {
         super("Ground", [], "foreground")
 
         this.addComponent(new Polygon(), {fillStyle: Globals.groundColor, points: Assets.square})
-        this.transform.scale = new Vector2(300, 30)
+        this.transform.scale = new Vector2(65, 18)
 
         // let count = 0
         // for (let i = -6000 - window.innerWidth; i < 6000 + window.innerWidth/2; i += 100) {

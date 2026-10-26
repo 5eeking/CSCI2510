@@ -1,40 +1,40 @@
 class LevelController extends Component {
     start() {
+        // Loads the first scene.
         SceneManager.loadScene(GenericLevel, true)
-        this.mainPosition = 0
-        /*if (Globals.playerPos != 0) {
-            let gameObjects = GameObject.findGameObjectsByType(Transform)
-            for (const gameObject of gameObjects) {
-                gameObject.broadcastMessage("setPosition", [Globals.playerPos])
-            }
-            Camera.main.transform.position.x = 5000
-            Globals.playerPos = 0
-            console.log("working", Globals.playerPos)
-        }*/
     }
 
     update() {
-        // For future levels
+        // Changes the scene when the player goes off screen
+        // dependant on the camera position. Also changing the color of the ground at the same time.
         let mainGameObject = GameObject.find("Main")
         if (mainGameObject) {
-            this.mainPosition = mainGameObject.transform.position
-            //console.log(Camera.main.transform.position.x + window.innerWidth/2, Camera.main.transform.position.x - window.innerWidth/2)
-
-            //if (this.mainPosition.x > 5000 || this.mainPosition.x < -5000) {
-                if (this.mainPosition.x + 20 <= Camera.main.transform.position.x - window.innerWidth/2) {
-                    this.changeScene(new Vector2(5000, this.mainPosition.y), "red", Level02)
-                    console.log(this.mainPosition.x)
+            let mainPosition = mainGameObject.transform.position
+            if (mainPosition.x + 20 <= Camera.main.transform.position.x - window.innerWidth/2) {
+                if (Globals.currentScene == 1) {
+                    Globals.currentScene = 2
+                    this.changeScene("red", "darkred", Level02)
+                } else {
+                    Globals.currentScene = 1
+                    this.changeScene("green", "darkgreen", Level01)
                 }
-                if (this.mainPosition.x - 20 >= Camera.main.transform.position.x + window.innerWidth/2) {
-                    this.changeScene(new Vector2(-5000, this.mainPosition.y), "red", Level02)
+            }
+            if (mainPosition.x - 20 >= Camera.main.transform.position.x + window.innerWidth/2) {
+                if (Globals.currentScene == 1) {
+                    Globals.currentScene = 2
+                    this.changeScene("red", "darkred", Level02)
+                } else {
+                    Globals.currentScene = 1
+                    this.changeScene("green", "darkgreen", Level01)
                 }
-            //}
+            }
         }
     }
 
-    changeScene(mainPos, color, scene) {
-        Globals.groundColor = color
-        //Globals.playerPos = mainPos
+    // Changes the scene with the information given.
+    changeScene(color1, color2, scene) {
+        Globals.groundColor = color1
+        Globals.groundTextureColor = color2
         SceneManager.loadScene(scene)
     }
 }

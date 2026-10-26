@@ -3,7 +3,7 @@ class UpdateComponent extends Component {
     start() {
         this.playerShape = new Vector2(20, 20)
         this.velocity = new Vector2(450, 0)
-        this.ground = window.innerHeight/2
+        this.ground = 0
         this.gravity = 1200
         this.dash = 0
         this.dir = 0
@@ -94,14 +94,10 @@ class UpdateComponent extends Component {
             this.dashCurrent = 0
         }
         //console.log(this.transform.position.x)
-        if (this.transform.position.x < 5000 && this.transform.position.x > -5000) {
+        if (this.transform.position.x < 500 && this.transform.position.x > -500) {
             Camera.main.transform.position = this.transform.position.clone()
         } else {
             Camera.main.transform.position.y = this.transform.position.clone().y
         }
-    }
-
-    setPosition(pos) {
-        this.transform.position = pos
     }
 }

@@ -1,24 +1,30 @@
 class QuestBoardController extends Component {
+
     update() {
+        // Creates an interact prompt when the player is in front of the quest board.
         let mainGameObject = GameObject.find("Main")
         if (mainGameObject) {
+
             let mainPosition = mainGameObject.transform.position
             let questPromptGameObject = GameObject.find("QuestPrompt")
             let questBoardPopupGameObject = GameObject.find("QuestBoardPopupGameObject")
+
             if (mainPosition.x < this.transform.position.x + 70 && mainPosition.x > this.transform.position.x - 70) {
+
                 if (!questPromptGameObject && !questBoardPopupGameObject) {
                     instantiate(new QuestPromptGameObject(), new Vector2(window.innerWidth/2 - 55, window.innerHeight/2 - 40))
                 }
+
             } else {
+                // Destroys the prompt and/or quest board popup if they exist when the player moves away from the quest board.
                 if (questPromptGameObject) {
                     questPromptGameObject.destroy()
                 }
                 if (questBoardPopupGameObject) {
-                    let questPaperGameObjects = GameObject.findGameObjectsWithTag("QuestPaper")
-                    for (const gameObject of questPaperGameObjects) {
-                        gameObject.destroy()
-                    }
-
+                    // let questPaperGameObjects = GameObject.findGameObjectsWithTag("QuestPaper")
+                    // for (const gameObject of questPaperGameObjects) {
+                    //     gameObject.destroy()
+                    // }
                     questBoardPopupGameObject.destroy()
                 }
             }
