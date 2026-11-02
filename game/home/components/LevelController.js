@@ -1,7 +1,10 @@
 class LevelController extends Component {
     start() {
         // Loads the first scene.
-        SceneManager.loadScene(GenericLevel, true)
+        let gameNameTextGameObject = GameObject.find("GameNameTextGameObject")
+        if (!gameNameTextGameObject) {
+            SceneManager.loadScene(GenericLevel, true)
+        }
     }
 
     update() {

@@ -1,17 +1,16 @@
 class Quests extends Component {
     // Creates quest text, goal numbers, and changes game object tags when instantiated.
-    constructor(difficulty, questNum) {
-        super()
-        this.difficulty = difficulty
-        this.questNum = questNum
-    }
 
+    difficulty = Math.floor(Math.random() * (3 - 1 + 1)) + 1
+    questNum = Math.floor(Math.random() * (3 - 1 + 1)) + 1
     questText = undefined
+    difficultyText = ""
+    rewardText = ""
 
     update() {
         if (!this.questText) {
             this.questText = this.generateText(this.difficulty, this.questNum)
-            console.log(this.questText)
+            //console.log(this.questText)
             // console.log(this.gameObject.tags)
             // console.log(this.gameObject.getComponent(QuestGoal).goal)
         }
@@ -40,13 +39,23 @@ class Quests extends Component {
     }
 
     generateDifficulty(difficulty, questMultiplier) {
+        let difficultyNum = 0
         switch (difficulty) {
             case 1:
-                return this.getRandomInteger(1, 5) * questMultiplier
+                this.difficultyText = "Easy Difficulty"
+                difficultyNum = this.getRandomInteger(1, 5) * questMultiplier
+                this.rewardText = "Recieve " + difficultyNum * 25 + " coins."
+                return difficultyNum
             case 2:
-                return this.getRandomInteger(5, 10) * questMultiplier
+                this.difficultyText = "Medium Difficulty"
+                difficultyNum = this.getRandomInteger(5, 10) * questMultiplier
+                this.rewardText = "Recieve " + difficultyNum * 50 + " coins."
+                return difficultyNum
             case 3:
-                return this.getRandomInteger(10, 15) * questMultiplier
+                this.difficultyText = "Hard Difficulty"
+                difficultyNum = this.getRandomInteger(10, 15) * questMultiplier
+                this.rewardText = "Recieve " + difficultyNum * 75 + " coins."
+                return difficultyNum
             default:
                 return 0
         }

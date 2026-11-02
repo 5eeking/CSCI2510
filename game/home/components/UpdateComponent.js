@@ -1,17 +1,27 @@
 class UpdateComponent extends Component {
 
-    start() {
-        this.playerShape = new Vector2(20, 20)
-        this.velocity = new Vector2(450, 0)
-        this.ground = 0
-        this.gravity = 1200
-        this.dash = 0
-        this.dir = 0
-        this.dashCurrent = 0
-        this.counterDash = 800
-        this.jumpCurrent = 0
-        this.laserCooldown = 0
-    }
+    // start() {
+    //     this.playerShape = new Vector2(20, 20)
+    //     this.velocity = new Vector2(450, 0)
+    //     this.ground = 0
+    //     this.gravity = 1200
+    //     this.dash = 0
+    //     this.dir = 0
+    //     this.dashCurrent = 0
+    //     this.counterDash = 800
+    //     this.jumpCurrent = 0
+    //     this.laserCooldown = 0
+    // }
+    playerShape = new Vector2(20, 20)
+    velocity = new Vector2(450, 0)
+    ground = 0
+    gravity = 1200
+    dash = 0
+    dir = 0
+    dashCurrent = 0
+    counterDash = 800
+    jumpCurrent = 0
+    laserCooldown = 0
 
     update(){
 
@@ -24,14 +34,10 @@ class UpdateComponent extends Component {
             }
         }
 
-        if (this.transform.position.y + this.playerShape.y < this.ground) {
+        if (this.velocity.y == -400) {
             this.transform.position.y += Time.deltaTime * this.velocity.y
-            if (this.velocity.y < 400) {
-                this.velocity.y += Time.deltaTime * this.gravity
-            }
         } else {
             this.jumpCurrent = 0
-            this.transform.position.y = this.ground - this.playerShape.y
         }
 
         /*** Player movement using A/D or </>. ***/
@@ -99,5 +105,10 @@ class UpdateComponent extends Component {
         } else {
             Camera.main.transform.position.y = this.transform.position.clone().y
         }
+    }
+
+    onCollisionStay(other, minimumTransformVector) {
+        this.gameObject.getComponent(RigidBody).velocity.y = 0
+        this.velocity.y = 0
     }
 }

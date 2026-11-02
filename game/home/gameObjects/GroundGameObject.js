@@ -1,8 +1,9 @@
 class GroundGameObject extends GameObject {
     constructor() {
-        super("Ground", [], "foreground")
+        super("Ground", [], "background")
 
         this.addComponent(new Polygon(), {fillStyle: Globals.groundColor, points: Assets.square})
+        this.addComponent(new Collider())
         this.transform.scale = new Vector2(65, 18)
 
         // let count = 0

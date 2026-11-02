@@ -12,7 +12,7 @@
         <canvas id="canv">
 
         </canvas>
-
+        <!-- Base Engine Files -->
         <script src = "../../engine/Engine.js"></script>
         <script src = "../../engine/Vector2.js"></script>
         <script src = "../../engine/Input.js"></script>
@@ -20,7 +20,9 @@
         <script src = "../../engine/SceneManager.js"></script>
         <script src = "../../engine/GameObject.js"></script>
         <script src = "../../engine/Time.js"></script>
+        <script src = "../../engine/Collisions.js"></script>
 
+        <!-- Component Engine Files -->
         <script src = "../../engine/Component.js"></script>
         <script src = "../../engine/components/Transform.js"></script>
         <script src = "../../engine/components/Polygon.js"></script>
@@ -29,42 +31,88 @@
         <script src = "../../engine/components/MultiLineTextLabel.js"></script>
         <script src = "../../engine/components/Camera.js"></script>
         <script src = "../../engine/components/Collider.js"></script>
+        <script src = "../../engine/components/RigidBody.js"></script>
 
+        <!-- Scene Files -->
         <script src = "./scenes/GenericLevel.js"></script>
         <script src = "./scenes/Level01.js"></script>
         <script src = "./scenes/Level02.js"></script>
+        <script src = "./scenes/StartLevel.js"></script>
 
+        <!-- Player Game Object File -->
         <script src = "./gameObjects/MainGameObject.js"></script>
+        <script src = "./gameObjects/MainInsideGameObject.js"></script>
+
+        <!-- Ground Game Object Files -->
         <script src = "./gameObjects/GroundGameObject.js"></script>
         <script src = "./gameObjects/GroundTextureGameObject.js"></script>
+
+        <!-- Projectile Game Object Files -->
         <script src = "./gameObjects/LaserGameObject.js"></script>
+
+        <!-- Quest Game Object Files -->
         <script src = "./gameObjects/QuestBoardGameObject.js"></script>
+        <script src = "./gameObjects/QuestBoardTextGameObject.js"></script>
         <script src = "./gameObjects/QuestBoardPopupGameObject.js"></script>
         <script src = "./gameObjects/QuestPromptGameObject.js"></script>
         <script src = "./gameObjects/QuestPaperGameObject.js"></script>
         <script src = "./gameObjects/QuestPaperTextGameObject.js"></script>
         <script src = "./gameObjects/QuestGameObject.js"></script>
+
+        <!-- Portal Game Object File -->
+        <script src = "./gameObjects/PortalGameObject.js"></script>
+
+        <!-- Dash Game Object Files -->
         <script src = "./gameObjects/DashGameObject.js"></script>
         <script src = "./gameObjects/DashTextGameObject.js"></script>
+
+        <!-- Start Screen Game Object Files -->
+        <script src = "./gameObjects/StartBackgroundGameObject.js"></script>
+        <script src = "./gameObjects/StartButtonGameObject.js"></script>
+        <script src = "./gameObjects/StartButtonHighlightGameObject.js"></script>
+        <script src = "./gameObjects/StartButtonTextGameObject.js"></script>
+        <script src = "./gameObjects/GameNameTextGameObject.js"></script>
+
+        <!-- Level Controller Game Object File -->
         <script src = "./gameObjects/LevelControllerGameObject.js"></script>
 
+        <script src = "./gameObjects/TestGameObject.js"></script>
+
+        <!-- Player Component -->
         <script src = "./components/UpdateComponent.js"></script>
+
+        <!-- Projectile Components -->
         <script src = "./components/LaserController.js"></script>
+
+        <!-- Dash Component -->
         <script src = "./components/DashController.js"></script>
+
+        <!-- Quest Components -->
         <script src = "./components/QuestBoardController.js"></script>
         <script src = "./components/QuestPromptController.js"></script>
         <script src = "./components/QuestPaperController.js"></script>
         <script src = "./components/Quests.js"></script>
         <script src = "./components/QuestGoal.js"></script>
+
+        <!-- Start Screen Components -->
+        <script src = "./components/StartButtonController.js"></script>
+
+        <!-- Portal Component -->
+        <script src = "./components/PortalController.js"></script>
+
+        <!-- Level Component -->
         <script src = "./components/LevelController.js"></script>
 
+        <script src = "./components/TestController.js"></script>
+
+        <!-- Other Files Containing Important Information -->
         <script src = "./Assets.js"></script>
         <script src = "./Globals.js"></script>
         <script src = "./Settings.js"></script>
 
         <script>
 
-            Engine.start(Level01, Settings)
+            Engine.start(StartLevel, Settings)
             
         </script>
     </body>

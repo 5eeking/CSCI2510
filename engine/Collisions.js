@@ -38,6 +38,7 @@ class Collisions {
                 )
             )
         }
+
         let worldSpacePointsTwo = []
         for (let point of gameObjectTwo.getComponent(Collider).points) {
             worldSpacePointsTwo.push(
@@ -53,18 +54,20 @@ class Collisions {
         for (let i = 0; i < worldSpacePoints.length; i++) {
             let point1 = worldSpacePoints[i]
             let point2 = worldSpacePoints[(i+1) % worldSpacePoints.length]
-            let edge = point2.minus(point1)
-            let axis = edge.orthogonal()
-            axes.push(axis)
-        }
-        for (let i = 0; i < worldSpacePointsTwo.length; i++) {
-            let point1 = worldSpacePointsTwo[i]
-            let point2 = worldSpacePointsTwo[(i+1) % worldSpacePointsTwo.length]
-            let edge = point2.minus(point1)
+            let edge = point2.minus(point1).normalized()
             let axis = edge.orthogonal()
             axes.push(axis)
         }
 
+        for (let i = 0; i < worldSpacePointsTwo.length; i++) {
+            let point1 = worldSpacePointsTwo[i]
+            let point2 = worldSpacePointsTwo[(i+1) % worldSpacePointsTwo.length]
+            let edge = point2.minus(point1).normalized()
+            let axis = edge.orthogonal()
+            axes.push(axis)
+        }
+
+        let minimumTransformVector = new Vector2(Number.MAX_VALUE, Number.MAX_VALUE)
         for (const axis of axes) {
 
             // Check for overlap
@@ -73,7 +76,18 @@ class Collisions {
             if (Math.max(...polygonProjectionsTwo) < Math.min(...polygonProjections) || Math.min(...polygonProjectionsTwo) > Math.max(...polygonProjections)) {
                 return false
             }
+
+            const minOverlap = Math.min(
+                Math.max(...polygonProjectionsTwo) - Math.min(...polygonProjections),
+                Math.max(...polygonProjections) - Math.min(...polygonProjectionsTwo)
+            )
+            if (minOverlap < minimumTransformVector.magnitude) {
+                minimumTransformVector = axis.normalized().scaled(minOverlap)
+            }
         }
-        return true
+        if (gameObject.transform.position.minus(gameObjectTwo.transform.position).dot(minimumTransformVector) > 0) {
+            return minimumTransformVector
+        }
+        return minimumTransformVector.scaled(-1)
     }
 }

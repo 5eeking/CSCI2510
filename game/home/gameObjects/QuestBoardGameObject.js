@@ -1,6 +1,6 @@
 class QuestBoardGameObject extends GameObject {
    constructor() {
-       super("QeustBoard", [], "foreground")
+       super("QeustBoard", [], "background")
        this.addComponent(new Polygon(), {fillStyle: "sienna", points:Assets.questBoard})
     //    this.addComponent(new Polygon(), {fillStyle: "white", points: [
     //     new Vector2(-25, -25),
