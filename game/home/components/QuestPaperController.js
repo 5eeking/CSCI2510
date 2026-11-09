@@ -55,4 +55,10 @@ class QuestPaperController extends Component {
          this.gameObject.destroy()
       }
    }
+
+   onMouseOver() {
+      if (Input.mouseButtonsDown.includes("")) {
+         // Change scenes to an open world like scene.
+      }
+   }
 }

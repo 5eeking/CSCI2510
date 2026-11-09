@@ -1,6 +1,6 @@
 class GroundGameObject extends GameObject {
     constructor() {
-        super("Ground", [], "background")
+        super("GroundGameObject", [], "background")
 
         this.addComponent(new Polygon(), {fillStyle: Globals.groundColor, points: Assets.square})
         this.addComponent(new Collider())

@@ -1,6 +1,6 @@
 class StartButtonGameObject extends GameObject {
    constructor() {
-       super("StartButtonGameObject", [], "foreground")
+       super("StartButtonGameObject", [], "UI")
        this.addComponent(new Polygon(), {fillStyle: "black", points:Assets.square})
        this.addComponent(new StartButtonController())
        this.addComponent(new Collider())

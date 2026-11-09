@@ -4,6 +4,10 @@ class TextLabel extends Component {
 
     font = "10px Arial" // Sizepx Font
 
+    textAlign = "left" // Horizontal alignment. "center" and "right"
+
+    textBaseLine = "alphabetic" // Verical alignment
+
     draw(ctx){
 
         // Signaling to the context that I'm going to draw something.
@@ -21,6 +25,8 @@ class TextLabel extends Component {
         ctx.fillStyle = this.fillStyle
 
         ctx.font = this.font
+        ctx.textAlign = this.textAlign
+        ctx.textBaseLine = this.textBaseLine
         
         ctx.fillText(this.text, 0, 0)
 
