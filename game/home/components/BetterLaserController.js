@@ -3,16 +3,21 @@ class BetterLaserController extends Component {
    fire = false
    velocity
    radians = 0
-   speed = 400
+   speed = 600
+
+   fixedUpdate() {
+      if (this.fire) {
+         this.transform.position.x += Time.deltaTime * this.velocity.x
+         this.transform.position.y += Time.deltaTime * this.velocity.y
+      }
+   }
 
    update() {
       if (this.fire) {
          if (!this.velocity) {
             this.velocity = new Vector2(this.speed * Math.cos(this.radians), this.speed * Math.sin(this.radians))
-            console.log(this.velocity)
+            //console.log(this.velocity)
          }
-         this.transform.position.x += Time.deltaTime * this.velocity.x
-         this.transform.position.y += Time.deltaTime * this.velocity.y
 
          // Destroys the laser if it goes off screen dependant on the camera position.
          if (this.transform.position.x < Camera.main.transform.position.x - window.innerWidth || 
@@ -20,6 +25,7 @@ class BetterLaserController extends Component {
             this.transform.position.y < Camera.main.transform.position.y - window.innerHeight ||
             this.transform.position.y > Camera.main.transform.position.y + window.innerHeight) {
                this.gameObject.destroy()
+               //console.log("working")
          }
 
       } else {
@@ -48,7 +54,8 @@ class BetterLaserController extends Component {
    }
 
    onTriggerStay(other) {
-      if (other.name == "GroundGameObject") {
+      //console.log("working")
+      if (other.name == "GroundGameObject" && this.fire) {
          this.gameObject.destroy()
       }
    }

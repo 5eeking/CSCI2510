@@ -59,6 +59,10 @@ class UpdateComponent extends Component {
 
     update(){
 
+        if (Input.mouseButtonsDownThisFrame) {
+            //console.log(Input.mouseButtonsDownThisFrame)
+        }
+
         /*** Player jump movement. ***/
         if (Input.keysDown.includes("Space") && this.isGrounded) {
             this.rigidBody.velocity.y = -300
@@ -83,22 +87,22 @@ class UpdateComponent extends Component {
 
         let betterLaserGameObject = GameObject.findGameObjectsWithTag("Better")
         if (Input.keysDown.includes("KeyR") && this.laserCooldown == 0) {
-            console.log("working")
-            this.laserCooldown = 15
+            //console.log("working")
+            this.laserCooldown = -1
             instantiate(new BetterLaserGameObject(), this.transform.position.clone())
         }
 
-        if (Input.keysUpThisFrame.includes("KeyR") && this.laserCooldown == 15) {
-            console.log("working")
+        if (Input.keysUpThisFrame.includes("KeyR") && this.laserCooldown == -1) {
+            //console.log("working")
             this.laserCooldown = 1
             for (const gameObject of betterLaserGameObject) {
                 gameObject.broadcastMessage("fireLaser", [])
             }
         }
 
-        if (this.laserCooldown != 0 && this.laserCooldown != 15) {
+        if (this.laserCooldown != 0 && this.laserCooldown != -1) {
             this.laserCooldown += 1
-            if (this.laserCooldown == 10) {
+            if (this.laserCooldown == 20) {
                 this.laserCooldown = 0
             }
         }

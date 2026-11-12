@@ -4,7 +4,7 @@ class GroundGameObject extends GameObject {
 
         this.addComponent(new Polygon(), {fillStyle: Globals.groundColor, points: Assets.square})
         this.addComponent(new Collider())
-        this.transform.scale = new Vector2(65, 18)
+        this.transform.scale = new Vector2(1300, 360)
 
         // let count = 0
         // for (let i = -6000 - window.innerWidth; i < 6000 + window.innerWidth/2; i += 100) {

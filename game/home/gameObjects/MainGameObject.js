@@ -5,5 +5,7 @@ class MainGameObject extends GameObject {
 
         this.addComponent(new Collider())
         this.addComponent(new RigidBody(), {gravity:1200})
+
+        this.transform.scale = new Vector2(20, 20)
     }
 }

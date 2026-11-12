@@ -3,6 +3,6 @@ class DashGameObject extends GameObject {
         super("Dash", [], "UI")
         this.addComponent(new DashController())
         this.addComponent(new Polygon(), {fillStyle:"white", points:Assets.square})
-        this.transform.scale = new Vector2(2, .1)
+        this.transform.scale = new Vector2(40, 2)
     }
 }

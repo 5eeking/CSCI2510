@@ -21,6 +21,7 @@ class QuestBoardGameObject extends GameObject {
     //     new Vector2(25, 5),
     //    ]})
        this.addComponent(new QuestBoardController())
+       this.addComponent(new Collider(), {isTrigger: true})
        this.transform.scale = new Vector2(2, 2)
    }
 }

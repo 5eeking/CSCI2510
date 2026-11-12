@@ -3,6 +3,7 @@ class QuestGoal extends Component {
     start() {
         this.goal = 0
         this.currentCount = 0
+        this.reward = 0
     }
 
     update() {

@@ -3,6 +3,6 @@ class StartButtonHighlightGameObject extends GameObject {
        super("StartButtonHighlightGameObject", [], "background")
        this.addComponent(new Polygon(), {fillStyle: "#403f3fd8", points:Assets.square})
        // this.addComponent(new StartButtonHighlightController())
-       this.transform.scale = new Vector2(4.2, 2.2)
+       this.transform.scale = new Vector2(84, 84)
    }
 }

@@ -4,6 +4,7 @@ class BetterLaserGameObject extends GameObject {
        this.addComponent(new Polygon(), {fillStyle: "purple", points:Assets.triangle})
        this.addComponent(new BetterLaserController())
        this.addComponent(new Collider(), {isTrigger: true})
-       this.transform.scale = new Vector2(1, 1)
+       this.addComponent(new RigidBody())
+       this.transform.scale = new Vector2(10, 10)
    }
 }

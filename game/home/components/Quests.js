@@ -40,21 +40,28 @@ class Quests extends Component {
 
     generateDifficulty(difficulty, questMultiplier) {
         let difficultyNum = 0
+        let reward = 0
         switch (difficulty) {
             case 1:
                 this.difficultyText = "Easy Difficulty"
-                difficultyNum = this.getRandomInteger(1, 5) * questMultiplier
-                this.rewardText = "Recieve " + difficultyNum * 25 + " coins."
+                difficultyNum = this.getRandomInteger(1, 4) * questMultiplier
+                reward = Math.floor(difficultyNum * 15 / questMultiplier)
+                this.gameObject.getComponent(QuestGoal).reward = reward
+                this.rewardText = "Recieve " + reward + " coins."
                 return difficultyNum
             case 2:
                 this.difficultyText = "Medium Difficulty"
-                difficultyNum = this.getRandomInteger(5, 10) * questMultiplier
-                this.rewardText = "Recieve " + difficultyNum * 50 + " coins."
+                difficultyNum = this.getRandomInteger(5, 9) * questMultiplier
+                reward = Math.floor(difficultyNum * 25 / questMultiplier)
+                this.gameObject.getComponent(QuestGoal).reward = reward
+                this.rewardText = "Recieve " + reward + " coins."
                 return difficultyNum
             case 3:
                 this.difficultyText = "Hard Difficulty"
                 difficultyNum = this.getRandomInteger(10, 15) * questMultiplier
-                this.rewardText = "Recieve " + difficultyNum * 75 + " coins."
+                reward = Math.floor(difficultyNum * 35 / questMultiplier)
+                this.gameObject.getComponent(QuestGoal).reward = reward
+                this.rewardText = "Recieve " + reward + " coins."
                 return difficultyNum
             default:
                 return 0

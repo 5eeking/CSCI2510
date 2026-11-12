@@ -5,6 +5,6 @@ class StartButtonGameObject extends GameObject {
        this.addComponent(new StartButtonController())
        this.addComponent(new Collider())
        //this.Collider.points([new Vector2(-window.innerWidth/2 - 20, -window.innerHeight/2 - 20), new Vector2(-window.innerWidth/2 + 20, -window.innerHeight/2 - 20), new Vector2(-window.innerWidth/2 + 20, -window.innerHeight/2 + 20), new Vector2(-window.innerWidth/2 - 20, -window.innerHeight/2 + 20)])
-       this.transform.scale = new Vector2(4, 2)
+       this.transform.scale = new Vector2(80, 40)
    }
 }
